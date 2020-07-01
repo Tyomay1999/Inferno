@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="general">
+        <header id="header">
+            <label for="courseName">Course Name</label>
+            <input type="text" placeholder="Course Name" id="courseName">
+            <label for="coursePrice">Course Price</label>
+            <input type="text" placeholder="Course Price" id="coursePrice">
+            <label for="courseDescription">Course Description</label>
+            <input type="text" placeholder="Course Description" id="courseDescription">
+            <label for="logo">IMG</label>
+            <input type="text" placeholder="IMG URL" id="courseLogo">
+            <button id="create">Create</button>
+        </header>
+
+
+        <div id="courseList">
+            
+            
+        </div>
+
+
+
+    </section>
+
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyBzDHKRa-oiJ13U3OelO-zA6jop2u6lJyw",
+    authDomain: "basic-a2490.firebaseapp.com",
+    databaseURL: "https://basic-a2490.firebaseio.com",
+    projectId: "basic-a2490",
+    storageBucket: "basic-a2490.appspot.com",
+    messagingSenderId: "36495193057",
+    appId: "1:36495193057:web:b1bef549aa48cc17bb58a0"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+    <script src="main.js"></script>
+</body>
+</html>
