@@ -1,12 +1,25 @@
 import React from 'react';
-import './modal.css';
+// import './modal.css'
+import addUserModal from './addUserModal.module.css';
 
-const Modal = () => {
-    return(
+export const Modal = () => {
+    return (
         <div>
             Modal
         </div>
     )
 }
 
-export default Modal;
+export const AddUserModal = () => {
+    return (
+        <div className={addUserModal.wrapper}>
+            <div className={addUserModal.group}>
+                <input type="text"   placeholder="Name" />
+            </div>
+            <div className={addUserModal.group}>
+                <input type="text"  placeholder="FirstName" />
+            </div>
+            
+        </div>
+    )
+}

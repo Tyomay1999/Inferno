@@ -1,14 +1,15 @@
 import React from 'react';
-import './table.css';
+import tableModule from './table.module.css';
 import { AddUser } from '../Buttons/button';
 import { withRouter } from 'react-router-dom'
 let i = 0;
 const Table = ({ users, history }) => {
-    console.log("Table -> history", history)
     return (
         <section>
-            <AddUser />
-            <div className="tbl-header">
+            <AddUser 
+                history={history}
+            />
+            <div className={tableModule.tbl_header}>
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <thead>
                         <tr>
@@ -24,7 +25,7 @@ const Table = ({ users, history }) => {
                     </thead>
                 </table>
             </div>
-            <div className="tbl-content">
+            <div className={tableModule.tbl_content}>
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                         {

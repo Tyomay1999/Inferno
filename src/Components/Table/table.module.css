@@ -1,12 +1,11 @@
-
   table{
     width:100%;
     table-layout: fixed;
   }
-  .tbl-header{
+  .tbl_header{
     background-color: rgba(255,255,255,0.3);
    }
-  .tbl-content{
+  .tbl_content{
     height:75vh;
     overflow-x:auto;
     margin-top: 0px;

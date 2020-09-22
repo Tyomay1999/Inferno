@@ -1,0 +1,29 @@
+/* .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.group {
+    position: relative;
+    margin: 45px 0;
+}
+
+input{
+    background: none;
+    color: wheat;
+    font-size: 25px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 320px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #12aef7;
+}
+input:focus {
+    outline: none;
+}
+
+
+
+ */
