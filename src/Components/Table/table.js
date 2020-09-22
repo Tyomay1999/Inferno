@@ -1,13 +1,15 @@
 import React from 'react';
 import './table.css';
 import { AddUser } from '../Buttons/button';
-const Table = ({ users }) => {
-    console.log("Table -> users", users)
+import { withRouter } from 'react-router-dom'
+let i = 0;
+const Table = ({ users, history }) => {
+    console.log("Table -> history", history)
     return (
         <section>
             <AddUser />
             <div className="tbl-header">
-                <table cellpadding="0" cellspacing="0" border="0">
+                <table cellPadding="0" cellSpacing="0" border="0">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -23,7 +25,7 @@ const Table = ({ users }) => {
                 </table>
             </div>
             <div className="tbl-content">
-                <table cellpadding="0" cellspacing="0" border="0">
+                <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                         {
                             users.map(({
@@ -34,9 +36,9 @@ const Table = ({ users }) => {
                                 phone,
                                 address
                             }) => {
-                                console.log("Table -> id", id)
+
                                 return (
-                                    <tr key={id} >
+                                    <tr key={i++} onClick={() => {history.push(`/user/${id}`)} }>
                                         <td>{id} ---- </td>
                                         <td>{firstName}</td>
                                         <td>{lastName}</td>
@@ -56,4 +58,4 @@ const Table = ({ users }) => {
     )
 }
 
-export default Table;
+export default withRouter(Table);

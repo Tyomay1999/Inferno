@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { API_URL } from '../../config';
+import { Search } from '../Search/search';
 import Table from '../Table/table';
 import Loading from '../Loading/loading';
 
@@ -20,7 +21,7 @@ class List extends Component {
                 return resp.json()
             })
             .then(data => {
-            console.log("List -> fatchCurensis -> data", data)
+            // console.log("List -> fatchCurensis -> data", data)
                 this.setState({
                     loading: false,
                     users: data
@@ -40,6 +41,7 @@ class List extends Component {
         }
         return (
             <div>
+                <Search/>
                 <Table
                     users={users}
                 />
