@@ -1,8 +1,9 @@
 import React from 'react';
-// import './modal.css'
+import buttonModule from '../Buttons/button.module.css'
 import addUserModal from './addUserModal.module.css';
 
-export const Modal = () => {
+export const Modal = (prop) => {
+    console.log("Modal -> prop", prop)
     return (
         <div>
             Modal
@@ -10,16 +11,62 @@ export const Modal = () => {
     )
 }
 
-export const AddUserModal = () => {
+export const AddUserModal = ({history}) => {
     return (
-        <div className={addUserModal.wrapper}>
-            <div className={addUserModal.group}>
-                <input type="text"   placeholder="Name" />
+        <div className={addUserModal.container}>
+            <div className={addUserModal.buttons}>
+                <div className={buttonModule.container}>
+                    <button className={`${buttonModule.btn} ${buttonModule.btn_4}`} onClick={() => { history.push(`/`) }} >Add User</button>
+                </div>
+                <div className={buttonModule.container}>
+                    <button className={`${buttonModule.btn} ${buttonModule.btn_4}`} onClick={() => { history.push(`/`) }} >Exit</button>
+                </div>
             </div>
-            <div className={addUserModal.group}>
-                <input type="text"  placeholder="FirstName" />
-            </div>
-            
+            <form>
+                <div className={addUserModal.group}>
+                    <input type="text" required />
+                    <span className={addUserModal.highlight}></span>
+                    <span className={addUserModal.bar}></span>
+                    <label>FirstName</label>
+                </div>
+                <div className={addUserModal.group}>
+                    <input type="text" required />
+                    <span className={addUserModal.highlight}></span>
+                    <span className={addUserModal.bar}></span>
+                    <label>LastName</label>
+                </div>
+                <div className={addUserModal.group}>
+                    <input type="text" required />
+                    <span className={addUserModal.highlight}></span>
+                    <span className={addUserModal.bar}></span>
+                    <label>Email</label>
+                </div>
+                <div className={addUserModal.group}>
+                    <input type="Number" required />
+                    <span className={addUserModal.highlight}></span>
+                    <span className={addUserModal.bar}></span>
+                    <label>Phone</label>
+                </div>
+                <div className={addUserModal.group}>
+                    <input type="text" required />
+                    <span className={addUserModal.highlight}></span>
+                    <span className={addUserModal.bar}></span>
+                    <label>City</label>
+                </div>
+                <div className={addUserModal.group}>
+                    <input type="text" required />
+                    <span className={addUserModal.highlight}></span>
+                    <span className={addUserModal.bar}></span>
+                    <label>Street Address</label>
+                </div>
+                <div className={addUserModal.group}>
+                    <input type="text" required />
+                    <span className={addUserModal.highlight}></span>
+                    <span className={addUserModal.bar}></span>
+                    <label>State</label>
+                </div>
+
+            </form>
         </div>
     )
 }

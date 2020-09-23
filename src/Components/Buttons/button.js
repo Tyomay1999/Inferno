@@ -1,6 +1,5 @@
 import React from 'react';
 import buttonModule from'./button.module.css' ;
-import {withRouter} from 'react-router-dom';
 
 
 export const AddUser = ({history}) => {

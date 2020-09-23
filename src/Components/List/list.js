@@ -21,7 +21,6 @@ class List extends Component {
                 return resp.json()
             })
             .then(data => {
-            // console.log("List -> fatchCurensis -> data", data)
                 this.setState({
                     loading: false,
                     users: data

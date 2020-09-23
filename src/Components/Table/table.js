@@ -6,7 +6,7 @@ let i = 0;
 const Table = ({ users, history }) => {
     return (
         <section>
-            <AddUser 
+            <AddUser
                 history={history}
             />
             <div className={tableModule.tbl_header}>
