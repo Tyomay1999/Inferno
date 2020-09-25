@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { API_URL } from '../../config';
 import { Search } from '../Search/search';
 import Table from '../Table/table';
+import Pagination from './pagination'
 import Loading from '../Loading/loading';
 
 class List extends Component {
@@ -9,6 +10,7 @@ class List extends Component {
         super();
         this.state = {
             paginationData: [],
+            allUsers:[],
             users: [],
             loading: false,
             downUp: '↑',
@@ -17,6 +19,7 @@ class List extends Component {
             page: 1,
         };
         this.userIdSort = this.userIdSort.bind(this);
+        this.paginationClick = this.paginationClick.bind(this);
     }
     fatchCurensis() {
         this.setState({
@@ -33,69 +36,77 @@ class List extends Component {
                     i++;
                     return item
                 })
+                this.dataPagination(data)
                 this.setState({
                     loading: false,
-                    users: data
+                    allUsers: data,
                 })
             })
-        }
-        componentDidMount() {
-            this.fatchCurensis()
-        }
-        dataPagination(){
-        const { users } = this.state.users
+    }
+    componentDidMount() {
+        this.fatchCurensis();
+    }
+    dataPagination(data) {
         let index = 0;
         let b = 0;
         let i = 0;
         let falseArray = [];
         let arrayReturner = [];
-        users.map(item => {
-            if(i < 50 + b){
+        data.map(item => {
+            if (i < 50 + b) {
                 falseArray.push(item);
                 i++;
-            }else if (i == 50 + b ){
+            } else if (i === 50 + b) {
                 falseArray.push(item)
                 arrayReturner[index] = falseArray;
                 falseArray = [];
                 index++;
                 i--;
-                b+=50
+                b += 50
             }
         })
-        if(falseArray){
+        if (falseArray) {
             arrayReturner[index] = falseArray
         }
         let total = arrayReturner.length;
         this.setState({
-            paginationData : arrayReturner,
+            users: arrayReturner[0],
+            paginationData: arrayReturner,
             totalPages: total
         })
     }
-    userIdSort(){
+    userIdSort() {
         this.setState({
-            loading:true
+            loading: true
         })
-        if(this.state.downUp === '↑'){
+        if (this.state.downUp === '↑') {
+            this.dataPagination(this.state.allUsers.reverse())
             this.setState({
-                users: this.state.users.reverse(),
                 downUp: '↓',
-                loading:false
+                loading: false
             })
-        }else{
+        } else {
+            this.dataPagination(this.state.allUsers.reverse())
             this.setState({
-                users: this.state.users.reverse(),
                 downUp: '↑',
-                loading:false
+                loading: false
             })
         }
     }
 
-    paginationClick(){
-        
+    paginationClick(prop) {
+        let nextPage = this.state.page;
+        nextPage = prop === 'next' ? nextPage + 1 : nextPage - 1;
+        let b = nextPage - 1;
+        let usersPage = this.state.paginationData[b];
+        this.setState({
+            users: usersPage,
+            page: nextPage
+        })
     }
 
     render() {
-        const { loading, users,downUp,history } = this.state
+        const { loading, users, downUp, history, page, totalPages } = this.state
         if (loading) {
             return (
                 <Loading />
@@ -111,6 +122,11 @@ class List extends Component {
                     users={users}
                     downUp={downUp}
                     userIdSort={this.userIdSort}
+                />
+                <Pagination
+                    page={page}
+                    totalPages={totalPages}
+                    paginationClick={this.paginationClick}
                 />
             </div>
         )
