@@ -2,15 +2,6 @@ import React from 'react';
 import buttonModule from '../Buttons/button.module.css'
 import addUserModal from './addUserModal.module.css';
 
-export const Modal = (prop) => {
-    console.log("Modal -> prop", prop)
-    return (
-        <div>
-            Modal
-        </div>
-    )
-}
-
 export const AddUserModal = ({history}) => {
     return (
         <div className={addUserModal.container}>
@@ -19,7 +10,7 @@ export const AddUserModal = ({history}) => {
                     <button className={`${buttonModule.btn} ${buttonModule.btn_4}`} onClick={() => { history.push(`/`) }} >Add User</button>
                 </div>
                 <div className={buttonModule.container}>
-                    <button className={`${buttonModule.btn} ${buttonModule.btn_4}`} onClick={() => { history.push(`/`) }} >Exit</button>
+                    <button className={`${buttonModule.btn} ${buttonModule.btn_4}`} onClick={() => { history.push(`/`) }} >Back</button>
                 </div>
             </div>
             <form>

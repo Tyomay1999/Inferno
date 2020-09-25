@@ -1,9 +1,8 @@
 import React from 'react';
 import tableModule from './table.module.css';
 import { AddUser } from '../Buttons/button';
-import { withRouter } from 'react-router-dom'
-let i = 0;
-const Table = ({ users, history }) => {
+import { withRouter } from 'react-router-dom';
+const Table = ({ users, history,downUp,userIdSort }) => {
     return (
         <section>
             <AddUser
@@ -12,15 +11,15 @@ const Table = ({ users, history }) => {
             <div className={tableModule.tbl_header}>
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>City</th>
-                            <th>Street Address</th>
-                            <th>State</th>
+                        <tr onClick={() => {userIdSort()}}>
+                            <th >Id {`${downUp}`}</th>
+                            <th>First Name {`${downUp}`}</th>
+                            <th>Last Name {`${downUp}`}</th>
+                            <th>Email {`${downUp}`}</th>
+                            <th>Phone {`${downUp}`}</th>
+                            <th>City {`${downUp}`}</th>
+                            <th>Street Address {`${downUp}`}</th>
+                            <th>State {`${downUp}`}</th>
                         </tr>
                     </thead>
                 </table>
@@ -37,14 +36,13 @@ const Table = ({ users, history }) => {
                                 phone,
                                 address
                             }) => {
-
                                 return (
-                                    <tr key={i++} onClick={() => {history.push(`/user/${id}`)} }>
-                                        <td>{id} ---- </td>
+                                    <tr key={id} onClick={() => {history.push(`/user/${id}`)} }>
+                                        <td>{id}</td>
                                         <td>{firstName}</td>
                                         <td>{lastName}</td>
                                         <td>{email}</td>
-                                        <td>{phone} ---- </td>
+                                        <td>{phone} </td>
                                         <td>{address.city}</td>
                                         <td>{address.streetAddress}</td>
                                         <td>{address.state}</td>

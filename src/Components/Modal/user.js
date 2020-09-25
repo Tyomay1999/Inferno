@@ -9,7 +9,7 @@ class User extends Component {
         this.state = {
             history: prop.history,
             id: prop.match.params.id,
-            users: [],
+            user: [],
             loading: false
         }
     }
@@ -17,22 +17,22 @@ class User extends Component {
         this.setState({
             loading: true
         })
-        fetch(`${API_URL}`)
+        fetch(`${API_URL(0,this.state.id)}`)
             .then(resp => {
                 return resp.json()
             })
             .then(data => {
                 this.setState({
-                    users: data,
+                    user: data,
                     loading: false
                 })
             })
-    }
+        }
     componentDidMount() {
         this.feachUserData()
     }
     render() {
-        const { users, history, id, loading } = this.state;
+        const { user, history, id, loading } = this.state;
        
         if (loading) {
             return <Loading />
@@ -48,8 +48,7 @@ class User extends Component {
                             <div className={userModule.user_card_cont}>
                                 <br />
                                 {
-                                    users.map((item) => {
-                                        if(item.id == id){
+                                    user.map((item) => {
                                         return(
                                                 <div key={id}>
                                                     <p className={userModule.user_id}>FirstName : {item.firstName}</p>
@@ -62,8 +61,6 @@ class User extends Component {
                                                     <p className={userModule.user_id}>State : {item.address.state}</p>
                                                 </div>
                                             )
-                                            
-                                        }
                                     })
                                 }
                             </div>
