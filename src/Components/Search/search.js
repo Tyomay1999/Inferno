@@ -22,7 +22,8 @@ class Search extends Component {
         if (searchValue) {
             let data = []
             this.state.users.forEach(user => {
-                if ( user.firstName === searchValue || user.lastName === searchValue || user.address.city === searchValue) {
+                const { firstName, lastName, address } = user
+                if (firstName === searchValue || lastName === searchValue) {
                     data[data.length] = user
                 }
             })

@@ -51,13 +51,21 @@ class User extends Component {
                                     user.map((item) => {
                                         return(
                                                 <div key={id}>
+                                                    <br/>
                                                     <p className={userModule.user_id}>FirstName : {item.firstName}</p>
+                                                    <br/>
                                                     <p className={userModule.user_id}>LastName : {item.lastName}</p>
+                                                    <br/>
                                                     <p className={userModule.user_id}>Id : {item.id}</p>
+                                                    <br/>
                                                     <p className={userModule.user_card_text}>Email : {item.email}</p>
+                                                    <br/>
                                                     <p className={userModule.user_id}>Phone : {item.phone}</p>
+                                                    <br/>
                                                     <p className={userModule.user_id}>City : {item.address.city}</p>
+                                                    <br/>
                                                     <p className={userModule.user_id}>Street Address : {item.address.streetAddress}</p>
+                                                    <br/>
                                                     <p className={userModule.user_id}>State : {item.address.state}</p>
                                                 </div>
                                             )

@@ -2,7 +2,7 @@ import React from 'react';
 import buttonModule from '../Buttons/button.module.css'
 import addUserModal from './addUserModal.module.css';
 
-export const AddUserModal = ({history}) => {
+export const AddUserModal = ({ history }) => {
     return (
         <div className={addUserModal.container}>
             <div className={addUserModal.buttons}>

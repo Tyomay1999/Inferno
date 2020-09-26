@@ -2,7 +2,7 @@ import React from 'react';
 import tableModule from './table.module.css';
 import { AddUser } from '../Buttons/button';
 import { withRouter } from 'react-router-dom';
-const Table = ({ users, history,downUp,userIdSort }) => {
+const Table = ({ users, history, downUp, userIdSort }) => {
     return (
         <section>
             <AddUser
@@ -11,7 +11,7 @@ const Table = ({ users, history,downUp,userIdSort }) => {
             <div className={tableModule.tbl_header}>
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <thead>
-                        <tr onClick={() => {userIdSort()}}>
+                        <tr onClick={() => { userIdSort() }}>
                             <th >Id {`${downUp}`}</th>
                             <th>First Name {`${downUp}`}</th>
                             <th>Last Name {`${downUp}`}</th>
@@ -37,7 +37,7 @@ const Table = ({ users, history,downUp,userIdSort }) => {
                                 address
                             }) => {
                                 return (
-                                    <tr key={id} onClick={() => {history.push(`/user/${id}`)} }>
+                                    <tr key={id} onClick={() => { history.push(`/user/${id}`) }}>
                                         <td>{id}</td>
                                         <td>{firstName}</td>
                                         <td>{lastName}</td>

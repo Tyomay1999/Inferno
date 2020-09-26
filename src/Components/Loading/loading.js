@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const Loading = (prop) => {
     const {width,height} = prop;
     return (
-        <div>
+        <div className={loadingModule.test}>
             <div 
                 className={loadingModule.wrapper}
                 style={{

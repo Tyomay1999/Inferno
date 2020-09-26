@@ -4,19 +4,21 @@ import Search from '../Search/search';
 import Table from '../Table/table';
 import Pagination from './pagination'
 import Loading from '../Loading/loading';
+import NotFound from '../NotFound/notFound';
 
 class List extends Component {
     constructor(prop) {
         super();
         this.state = {
             paginationData: [],
-            allUsers:[],
+            allUsers: [],
             users: [],
             loading: false,
             downUp: '↑',
             history: prop.history,
             totalPages: 1,
             page: 1,
+            error: false
         };
         this.userIdSort = this.userIdSort.bind(this);
         this.paginationClick = this.paginationClick.bind(this);
@@ -27,7 +29,12 @@ class List extends Component {
         })
         fetch(`${API_URL()}`)
             .then(resp => {
-                return resp.json()
+                return resp.json().then(data => {
+                    if(resp.ok){
+                        return data
+                    }
+                    return Promise.reject(data)
+                })
             })
             .then(data => {
                 let i = 1;
@@ -40,6 +47,12 @@ class List extends Component {
                 this.setState({
                     loading: false,
                     allUsers: data,
+                })
+            })
+            .catch(() => {
+                this.setState({
+                    loading: false,
+                    error: true
                 })
             })
     }
@@ -106,7 +119,12 @@ class List extends Component {
     }
 
     render() {
-        const { loading, users, downUp, history, page, totalPages,allUsers } = this.state
+        const { loading, users, downUp, history, page, totalPages, allUsers,error } = this.state;
+        if(error){
+            return(
+                <NotFound/>
+            )
+        }
         if (loading) {
             return (
                 <Loading />
