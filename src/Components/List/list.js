@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { API_URL } from '../../config';
-import { Search } from '../Search/search';
+import Search from '../Search/search';
 import Table from '../Table/table';
 import Pagination from './pagination'
 import Loading from '../Loading/loading';
@@ -106,7 +106,7 @@ class List extends Component {
     }
 
     render() {
-        const { loading, users, downUp, history, page, totalPages } = this.state
+        const { loading, users, downUp, history, page, totalPages,allUsers } = this.state
         if (loading) {
             return (
                 <Loading />
