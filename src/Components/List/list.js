@@ -115,7 +115,7 @@ class List extends Component {
         return (
             <div>
                 <Search
-                    users={users}
+                    users={allUsers}
                     history={history}
                 />
                 <Table

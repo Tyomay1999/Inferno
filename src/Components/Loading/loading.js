@@ -86,8 +86,8 @@ Loading.propTypes = {
 
 }
 Loading.defaultProps = {
-    width: '30px',
-    height: '30px'
+    width: '-700px',
+    height: '-700px'
 }
 
 export default Loading;

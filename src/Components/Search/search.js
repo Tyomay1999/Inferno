@@ -1,65 +1,66 @@
 import React, { Component } from 'react';
-import Loading from '../Loading/loading';
 import searchModule from './search.module.css';
 
 class Search extends Component {
-    constructor({users,history}) {
+    constructor({ users, history }) {
         super();
         this.state = {
             users: users,
-            history:history,
+            history: history,
             searchQuery: '',
             searchResults: [],
             loading: false
         }
     }
-    
+
     handleChange = (event) => {
         const searchValue = event.target.value;
         this.setState({
-            loading:true,
+            loading: true,
             searchQuery: searchValue
         })
-        if(searchValue){
-            this.state.users.map(user => {
-                if( user.firstName === searchValue ){
-                    console.log("handleChange -> user.firstName", user.firstName)
-                    this.setState({
-                        searchResults: user,
-                        loading:false
-                    })
+        if (searchValue) {
+            let data = []
+            this.state.users.forEach(user => {
+                if ( user.firstName === searchValue || user.lastName === searchValue || user.address.city === searchValue) {
+                    data[data.length] = user
                 }
+            })
+            this.setState({
+                searchResults: data,
+                loading: false
             })
         }
     }
-    
+
     redirect = (userId) => {
         this.state.history.push(`/user/${userId}`);
         this.setState({
-            searchQuery:'',
+            searchQuery: '',
             searchResults: []
         })
     }
-   
+
     searchResult = () => {
-        const {searchQuery , searchResults , loading} = this.state
-        if(!searchQuery){
+        const { searchQuery, searchResults, loading } = this.state
+        if (!searchQuery) {
             return ''
         }
-        if(searchResults.length > 0){
+        console.log("searchResult -> searchResults.length", searchResults.length)
+        if (searchResults.length > 0) {
             return (
                 <div className={searchModule.Search_result_container}>
                     {
                         searchResults.map(user => {
                             console.log("renderSearchResult -> searchResults", searchResults);
 
-                            return(
-                                <div    
+                            return (
+                                <div
                                     key={user.id}
                                     onClick={() => { this.redirect(user.id) }}
                                     className={searchModule.Search_result}
                                 >
-                                    FirstName---:{user.firstName}
+                                    {user.id} {user.firstName} {user.lastName}
                                 </div>
                             )
                         })
@@ -68,16 +69,17 @@ class Search extends Component {
 
             )
         }
-        if(!loading){
-            return(
+        if (!loading) {
+            return (
                 <div className={searchModule.Search_no_result}>
-                    No results found ----- {searchQuery}
+                    No results found -----{">"} {searchQuery}
                 </div>
             )
         }
     }
     render() {
-        const {searchQuery , loading} = this.state
+        console.log("redirect -> searchQuery", this.state.searchQuery)
+        const { searchQuery } = this.state
         return (
             <div className={searchModule.Search} >
                 <div className=''>
@@ -91,16 +93,6 @@ class Search extends Component {
                         placeholder='User firstName or lastName'
                         onChange={this.handleChange}
                     />
-                    {
-                        loading && searchQuery && (
-                            <div className='Search-loading'>
-                                <Loading
-                                    width={"15px"}
-                                    height={"15px"}
-                                />
-                            </div>
-                        )
-                    }
                 </div>
                 {this.searchResult()}
             </div>

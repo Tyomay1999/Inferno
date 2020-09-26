@@ -52,23 +52,24 @@
   width: 100%;
   max-height: 299px;
   overflow-y: auto;
-  background-color: #3d180f;
+  background-color: whitesmoke;
   border: 1px solid #0c2033;
   border-radius: 4px;
-  box-shadow: 0px 0px 40px 0px#1f364d;
+  box-shadow: 0px 0px 40px 0px#2d4966;
   margin-top: 10px;
 }
 .Search_result {
-  color: #9cb3c9;
+  color: #000000;
   padding: 15px 0 15px 35px;
   border-bottom: 2px solid #0c2033;
   cursor: pointer;
 }
 .Search_result:hover {
-  color: #fff;
+  color: rgb(25, 125, 184);
 }
 .Search_no_result {
   color: #000000;
   padding: 15px 0 15px 35px;
   border-bottom: 1px solid #0f273d;
+  background-color: whitesmoke;
 }
